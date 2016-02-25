@@ -4,8 +4,15 @@ DB_NAME='diary2'
 GH_PAGES="http://progedu.github.io/rdb-study/"
 SQL_DUMP="dump_${DB_NAME}.sql"
 
-sudo -u $PG_USER dropdb --if-exists "$DB_NAME"
-sudo -u $PG_USER createdb -T template0 "$DB_NAME"
+if [ $USER = $PG_USER ]
+then
+	SUDO=""
+else
+	SUDO="sudo -u $PG_USER"
+fi
 
-curl -o- "${GH_PAGES}${SQL_DUMP}" | sudo -u $PG_USER psql "$DB_NAME"
+$SUDO dropdb --if-exists "$DB_NAME"
+$SUDO createdb -T template0 "$DB_NAME"
+
+curl -o- "${GH_PAGES}${SQL_DUMP}" | $SUDO psql "$DB_NAME"
 
