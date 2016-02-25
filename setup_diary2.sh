@@ -8,5 +8,4 @@ sudo -u $PG_USER dropdb --if-exists "$DB_NAME"
 sudo -u $PG_USER createdb -T template0 "$DB_NAME"
 
 curl -o- "${GH_PAGES}${SQL_DUMP}" | sudo -u $PG_USER psql "$DB_NAME"
-sudo -u postgres psql "$DB_NAME"
 
