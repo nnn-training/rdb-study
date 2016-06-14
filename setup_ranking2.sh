@@ -1,7 +1,7 @@
 #!/bin/sh
 PG_USER='postgres'
 DB_NAME='ranking2'
-GH_PAGES="http://progedu.github.io/rdb-study/"
+GH_PAGES="https://progedu.github.io/rdb-study/"
 SQL_DUMP="dump_${DB_NAME}.sql"
 
 if [ $USER = $PG_USER ]
