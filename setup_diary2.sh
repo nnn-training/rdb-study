@@ -8,4 +8,3 @@ dropdb --if-exists "$DB_NAME"
 createdb -T template0 "$DB_NAME"
 
 curl -o- "${GH_PAGES}${SQL_DUMP}" | psql "$DB_NAME"
-
