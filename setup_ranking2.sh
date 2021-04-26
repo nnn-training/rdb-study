@@ -4,15 +4,8 @@ DB_NAME='ranking2'
 GH_PAGES="https://nnn-training.github.io/rdb-study/"
 SQL_DUMP="dump_${DB_NAME}.sql"
 
-if [ $USER = $PG_USER ]
-then
-	SUDO=""
-else
-	SUDO="sudo -u $PG_USER"
-fi
+dropdb --if-exists "$DB_NAME"
+createdb -T template0 "$DB_NAME"
 
-$SUDO dropdb --if-exists "$DB_NAME"
-$SUDO createdb -T template0 "$DB_NAME"
-
-curl -o- "${GH_PAGES}${SQL_DUMP}" | $SUDO psql "$DB_NAME"
+curl -o- "${GH_PAGES}${SQL_DUMP}" | psql "$DB_NAME"
 
