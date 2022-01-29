@@ -37,7 +37,7 @@ CREATE TABLE comments (
     comment_id integer NOT NULL,
     diary_id integer NOT NULL,
     comment text,
-    user_id integer
+    userid integer
 );
 
 
@@ -160,7 +160,7 @@ ALTER TABLE ONLY users ALTER COLUMN userid SET DEFAULT nextval('users_userid_seq
 -- Data for Name: comments; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
-COPY comments (comment_id, diary_id, comment, user_id) FROM stdin;
+COPY comments (comment_id, diary_id, comment, userid) FROM stdin;
 1	2	寝すぎでは	3
 2	10	3月も寝よう	\N
 3	3	明日は天気悪いらしい	1
